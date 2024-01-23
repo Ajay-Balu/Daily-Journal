@@ -1,0 +1,20 @@
+<%- include('partials/header'); %>
+<h1>Home</h1>
+<p><%= para %></p>
+
+<% posts.forEach(function(list) { %>
+
+    <h1><%= list.title %></h1>
+    <p>
+        <% if (list.content && typeof list.content === 'string') { %>
+            <%= list.content.substring(0, 100) + " ..." %>
+            <a href="/posts/<%= list._id %>">Read more</a>
+        <% } else { %>
+            <!-- Handle cases where list.content is not a string -->
+            <span>Content not available</span>
+        <% } %>
+    </p>
+
+<% }); %>
+
+<%- include('partials/footer'); %>
